@@ -1,0 +1,47 @@
+
+.grid-container {
+  display: grid;
+  text-align: center;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+  div[class^='row'] {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+
+    div[class^='cell'] {
+      display: grid;
+      place-items: center;
+      min-height: 15vh;
+      border: 1px solid black;
+    }
+
+  .controls {
+    display: grid;
+    width: 50%;
+    margin: 5% auto 0 auto;
+    justify-items: center;
+    grid-template-areas:
+      ". up ."
+      "left . right"
+      ". down .";
+  }
+
+    #up {
+      grid-area: up;
+    }
+
+    #right {
+      grid-area: right;
+    }
+
+    #down {
+      grid-area: down;
+    }
+
+    #left {
+      grid-area: left;
+    }
