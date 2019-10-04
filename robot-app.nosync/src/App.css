@@ -25,27 +25,27 @@
     margin: 5% auto 0 auto;
     justify-items: center;
     grid-template-areas:
-      ". up . ."
-      "left . right acc"
-      ". down . .";
+      ". n . ."
+      "w . e acc"
+      ". s . .";
   }
 
     #forward {
       grid-area: acc;
     }
 
-    #up {
-      grid-area: up;
+    #north {
+      grid-area: n;
     }
 
-    #right {
-      grid-area: right;
+    #east {
+      grid-area: e;
     }
 
-    #down {
-      grid-area: down;
+    #south {
+      grid-area: s;
     }
 
-    #left {
-      grid-area: left;
+    #west {
+      grid-area: w;
     }
