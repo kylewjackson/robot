@@ -69,6 +69,7 @@ class App extends React.Component {
         <button id="down" onClick={() => props.handleMove([1, 0])}>Down</button>
         <button id="left" onClick={() => props.handleMove([0, -1])}>Left</button>
         <button id="right" onClick={() => props.handleMove([0, 1])}>Right</button>
+        <button id="forward">Accelerate</button>
       </div>
     );
   };
