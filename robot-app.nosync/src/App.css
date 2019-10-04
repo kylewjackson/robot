@@ -49,3 +49,11 @@
     #west {
       grid-area: w;
     }
+
+    button:not(.active) {
+      opacity: .5;
+    }
+
+    button.active {
+      color: red;
+    }

@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 
 const count = 5;
+const cardinals = ['North', 'South', 'West', 'East'];
+const coordinates = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,7 @@ class App extends React.Component {
       row: 3,
       col: 3,
       direction: [0, 1],
+      active: 'east'
     };
 
     this.handleMove = this.handleMove.bind(this);
@@ -17,7 +20,9 @@ class App extends React.Component {
   };
 
   handleTurn(dir) {
-    this.setState({direction: dir});
+    const currentChange = coordinates.map((cord, i) => cord[0] === dir[0] && cord[1] === dir[1] ? i : -1);
+    const currentDirection = cardinals.filter((card, i) => currentChange[i] > -1).join('').toLowerCase();
+    this.setState({direction: dir, active: currentDirection});
   };
 
   handleMove() {
@@ -51,6 +56,7 @@ class App extends React.Component {
         {rows}
       </section>
       <Controls
+        active={this.state.active}
         handleMove={this.handleMove}
         handleTurn={this.handleTurn}
       />
@@ -87,12 +93,20 @@ class App extends React.Component {
     };
 
   function Controls(props) {
+    const buttons = cardinals.map((dir, i) =>
+      <button
+        type="button"
+        key={`${dir.toLowerCase()}-btn`}
+        id={dir.toLowerCase()}
+        className={props.active === dir.toLowerCase() ? 'active' : null}
+        onClick={() => props.handleTurn(coordinates[i])}
+      >
+        {dir}
+      </button>
+    );
     return (
       <div className="controls">
-        <button type="button" id="north" onClick={() => props.handleTurn([-1, 0])}>North</button>
-        <button type="button" id="south" onClick={() => props.handleTurn([1, 0])}>South</button>
-        <button type="button" id="west" onClick={() => props.handleTurn([0, -1])}>West</button>
-        <button type="button" id="east" onClick={() => props.handleTurn([0, 1])}>East</button>
+        {buttons}
         <button type="button" id="forward" onClick={() => props.handleMove()}>Accelerate</button>
       </div>
     );
