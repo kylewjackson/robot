@@ -14,6 +14,7 @@ class App extends React.Component {
       col: 3,
       direction: [0, 1],
       active: 'east',
+      bump: false,
     };
 
     this.handleMove = this.handleMove.bind(this);
@@ -37,7 +38,10 @@ class App extends React.Component {
   };
 
     bump() {
-      alert("You've hit a wall!");
+      this.setState({bump: true});
+      setTimeout(() => {
+        this.setState({bump: false});
+      }, 1000);
     };
 
   render() {
@@ -49,6 +53,7 @@ class App extends React.Component {
         col={this.state.col}
         direction={this.state.direction}
         active={this.state.active}
+        bump={this.state.bump}
       />
     );
     return (
@@ -76,6 +81,7 @@ class App extends React.Component {
         col={props.row && props.col === i + 1 ? props.col : false}
         direction={props.direction}
         active={props.active}
+        bump={props.bump}
       />
     );
     return (
@@ -90,7 +96,7 @@ class App extends React.Component {
       return (
         <div className={`cell-${props.num}`}>
           <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
-            {robot ? <span id="robot"></span> : null}
+            {robot ? <span id="robot" className={props.bump? `bump ${props.active}` : props.active}></span> : null}
           </CSSTransitionGroup>
         </div>
       );

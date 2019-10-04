@@ -1,6 +1,7 @@
 
 .grid-container {
   display: grid;
+  overflow: hidden;
   text-align: center;
   width: 90vw;
   margin: 0 auto;
@@ -88,6 +89,24 @@
         left: 18vw;
       }
 
+        #robot.bump.east {
+          animation: bump-east .5s ease-out;
+        }
+
+        @keyframes bump-east {
+          0% {
+            left: 5vw;
+          }
+
+          50% {
+            left: -5vw;
+          }
+
+          100% {
+            left: 0;
+          }
+        }
+
       /* Move West */
 
       .robot-west-enter {
@@ -107,6 +126,24 @@
         transition: .2s;
         right: 18vw;
       }
+
+        #robot.bump.west {
+          animation: bump-west .5s ease-out;
+        }
+
+        @keyframes bump-west {
+          0% {
+            right: 5vw;
+          }
+
+          50% {
+            right: -5vw;
+          }
+
+          100% {
+            right: 0;
+          }
+        }
 
       /* Move North */
 
@@ -128,6 +165,24 @@
         bottom: 100%;
       }
 
+        #robot.bump.north {
+          animation: bump-north .5s ease-out;
+        }
+
+        @keyframes bump-north {
+          0% {
+            bottom: 12%;
+          }
+
+          50% {
+            bottom: -50%;
+          }
+
+          100% {
+            bottom: 0;
+          }
+        }
+
       /* Move South */
 
       .robot-south-enter {
@@ -147,3 +202,21 @@
         transition: .2s;
         top: 100%;
       }
+
+        #robot.bump.south {
+          animation: bump-south .5s ease-out;
+        }
+
+        @keyframes bump-south {
+          0% {
+            top: 12%;
+          }
+
+          50% {
+            top: -50%;
+          }
+
+          100% {
+            top: 0;
+          }
+        }
