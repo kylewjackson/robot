@@ -15,7 +15,7 @@
     div[class^='cell'] {
       display: grid;
       place-items: center;
-      min-height: 15vh;
+      min-height: 12vh;
       border: 1px solid black;
     }
 
@@ -62,8 +62,8 @@
     #robot {
       display: block;
       position: relative;
-      width: 100px;
-      height: 100px;
+      width: 10vh;
+      height: 10vh;
       background-color: blue;
       border-radius: 50%;
     }
