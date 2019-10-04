@@ -71,7 +71,7 @@
       /* Move East */
 
       .robot-east-enter {
-        left: -133%;
+        left: -18vw;
       }
 
       .robot-east-enter.robot-east-enter-active {
@@ -85,13 +85,13 @@
 
       .robot-east-leave.robot-east-leave-active {
         transition: .2s;
-        left: 133%;
+        left: 18vw;
       }
 
       /* Move West */
 
       .robot-west-enter {
-        right: -133%;
+        right: -18vw;
       }
 
       .robot-west-enter.robot-west-enter-active {
@@ -105,7 +105,7 @@
 
       .robot-west-leave.robot-west-leave-active {
         transition: .2s;
-        right: 133%;
+        right: 18vw;
       }
 
       /* Move North */

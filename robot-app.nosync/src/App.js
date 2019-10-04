@@ -13,7 +13,7 @@ class App extends React.Component {
       row: 3,
       col: 3,
       direction: [0, 1],
-      active: 'east'
+      active: 'east',
     };
 
     this.handleMove = this.handleMove.bind(this);
