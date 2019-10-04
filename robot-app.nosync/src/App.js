@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 const count = 5;
 const cardinals = ['North', 'South', 'West', 'East'];
@@ -47,6 +48,7 @@ class App extends React.Component {
         row={this.state.row === i + 1 ? this.state.row : false}
         col={this.state.col}
         direction={this.state.direction}
+        active={this.state.active}
       />
     );
     return (
@@ -73,6 +75,7 @@ class App extends React.Component {
         row={props.row}
         col={props.row && props.col === i + 1 ? props.col : false}
         direction={props.direction}
+        active={props.active}
       />
     );
     return (
@@ -84,10 +87,11 @@ class App extends React.Component {
 
     function Cell(props) {
       const robot = props.row && props.col ? true : false;
-      const face = props.direction[0] < 0 ? 'Robot N' : props.direction[0] > 0 ? 'Robot S' : props.direction[1] > 0 ? 'Robot E' : 'Robot W';
       return (
         <div className={`cell-${props.num}`}>
-          {robot ? <span id="robot">{face}</span> : null}
+          <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
+            {robot ? <span id="robot"></span> : null}
+          </CSSTransitionGroup>
         </div>
       );
     };
