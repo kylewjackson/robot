@@ -14,6 +14,7 @@ class App extends React.Component {
       col: 3,
       direction: [0, 1],
       active: 'east',
+      previous: null,
       bump: false,
     };
 
@@ -23,8 +24,12 @@ class App extends React.Component {
 
   handleTurn(dir) {
     const currentChange = coordinates.map((cord, i) => cord[0] === dir[0] && cord[1] === dir[1] ? i : -1);
+    const previousDirection = this.state.active;
     const currentDirection = cardinals.filter((card, i) => currentChange[i] > -1).join('').toLowerCase();
-    this.setState({direction: dir, active: currentDirection});
+    this.setState({direction: dir, active: currentDirection, previous: previousDirection});
+    setTimeout(() => {
+      this.setState({previous: currentDirection});
+    }, 1000);
   };
 
   handleMove() {
@@ -53,6 +58,7 @@ class App extends React.Component {
         col={this.state.col}
         direction={this.state.direction}
         active={this.state.active}
+        previous={this.state.previous}
         bump={this.state.bump}
       />
     );
@@ -81,6 +87,7 @@ class App extends React.Component {
         col={props.row && props.col === i + 1 ? props.col : false}
         direction={props.direction}
         active={props.active}
+        previous={props.previous}
         bump={props.bump}
       />
     );
@@ -96,7 +103,11 @@ class App extends React.Component {
       return (
         <div className={`cell-${props.num}`}>
           <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
-            {robot ? <span id="robot" className={props.bump? `bump ${props.active}` : props.active}></span> : null}
+            {robot ?
+              <span id="robot" className={props.bump? `bump ${props.active} prev-${props.previous}` :
+              `${props.active} prev-${props.previous}`}></span> :
+              null
+            }
           </CSSTransitionGroup>
         </div>
       );
