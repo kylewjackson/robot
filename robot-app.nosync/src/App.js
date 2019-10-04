@@ -6,7 +6,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    //up/right is position, down/left is negative
     this.state = {
       row: 3,
       col: 3,
@@ -42,6 +41,7 @@ class App extends React.Component {
         num={i + 1}
         row={this.state.row === i + 1 ? this.state.row : false}
         col={this.state.col}
+        direction={this.state.direction}
       />
     );
     return (
@@ -50,7 +50,10 @@ class App extends React.Component {
         <h1>Robo-Trek</h1>
         {rows}
       </section>
-      <Controls handleMove={this.handleMove} handleTurn={this.handleTurn} />
+      <Controls
+        handleMove={this.handleMove}
+        handleTurn={this.handleTurn}
+      />
       </>
     );
   };
@@ -63,6 +66,7 @@ class App extends React.Component {
         num={i + 1}
         row={props.row}
         col={props.row && props.col === i + 1 ? props.col : false}
+        direction={props.direction}
       />
     );
     return (
@@ -74,9 +78,10 @@ class App extends React.Component {
 
     function Cell(props) {
       const robot = props.row && props.col ? true : false;
+      const face = props.direction[0] < 0 ? 'Robot N' : props.direction[0] > 0 ? 'Robot S' : props.direction[1] > 0 ? 'Robot E' : 'Robot W';
       return (
         <div className={`cell-${props.num}`}>
-          {robot ? <span id="robot">Robot</span> : null}
+          {robot ? <span id="robot">{face}</span> : null}
         </div>
       );
     };
