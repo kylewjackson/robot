@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { CSSTransitionGroup } from 'react-transition-group';
+import {Robo} from './Icons';
 
 const count = 5;
 const cardinals = ['North', 'South', 'West', 'East'];
@@ -101,9 +102,11 @@ class App extends React.Component {
       const robot = props.row && props.col ? true : false;
       return (
         <div className={`cell-${props.num}`}>
-          <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
+          <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={750} transitionLeaveTimeout={750}>
             {robot ?
-              <span id="robot" className={props.bump? `bump ${props.active}` : props.turn ? `turn ${props.active}` : props.active}>V</span> :
+              <span id="robot" key="robot" className={props.bump? `bump ${props.active}` : props.turn ? `turn ${props.active}` : props.active}>
+                <Robo />
+              </span> :
               null
             }
           </CSSTransitionGroup>

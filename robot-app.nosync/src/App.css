@@ -64,21 +64,42 @@
       display: grid;
       position: relative;
       place-items: center;
-      width: 10vh;
-      height: 10vh;
-      background-color: blue;
-      color: yellow;
-      font-weight: bold;
-      border-radius: 50%;
+      width: 8vh;
+      height: 8vh;
     }
 
+      .wheels,
+      .face {
+        position: absolute;
+      }
+
+        .face {
+          width: 20%;
+          top: 12%;
+        }
+
+        .wheels {
+          width: 28%;
+          top: 100%;
+        }
+
+          .wheels.left {
+            left: 22%;
+          }
+
+          .wheels.right {
+            right: 22%;
+          }
+
+
+
       /* Turn */
-      
+
       #robot.turn {
         transition: .5s;
       }
 
-      #robot.east {
+      /* #robot.east {
         transform: rotate(-90deg);
       }
 
@@ -92,7 +113,8 @@
 
       #robot.south {
         transform: rotate(0deg);
-      }
+      } */
+
 
       /* Move East */
 
@@ -101,7 +123,7 @@
       }
 
       .robot-east-enter.robot-east-enter-active {
-        transition: .2s;
+        transition: .75s;
         left: 0;
       }
 
@@ -110,7 +132,7 @@
       }
 
       .robot-east-leave.robot-east-leave-active {
-        transition: .2s;
+        transition: .75s;
         left: 18vw;
       }
 
@@ -132,6 +154,15 @@
           }
         }
 
+        /* Wheels Roll Horizontally */
+        .robot-east-enter.robot-east-enter-active .wheels.left,
+        .robot-east-leave.robot-east-leave-active .wheels.lef,
+        .robot-east-enter.robot-east-enter-active .wheels.right,
+        .robot-east-leave.robot-east-leave-active .wheels.right {
+          transform: rotate(360deg);
+          transition: .75s;
+        }
+
       /* Move West */
 
       .robot-west-enter {
@@ -139,7 +170,7 @@
       }
 
       .robot-west-enter.robot-west-enter-active {
-        transition: .2s;
+        transition: .75s;
         right: 0;
       }
 
@@ -148,7 +179,7 @@
       }
 
       .robot-west-leave.robot-west-leave-active {
-        transition: .2s;
+        transition: .75s;
         right: 18vw;
       }
 
@@ -169,6 +200,14 @@
             right: 0;
           }
         }
+          /* Wheels Roll Horizontally */
+          .robot-west-enter.robot-west-enter-active .wheels.left,
+          .robot-west-leave.robot-west-leave-active .wheels.lef,
+          .robot-west-enter.robot-west-enter-active .wheels.right,
+          .robot-west-leave.robot-west-leave-active .wheels.right {
+            transform: rotate(-360deg);
+            transition: .75s;
+          }
 
       /* Move North */
 
@@ -177,7 +216,7 @@
       }
 
       .robot-north-enter.robot-north-enter-active {
-        transition: .2s;
+        transition: .75s;
         bottom: 0;
       }
 
@@ -186,7 +225,7 @@
       }
 
       .robot-north-leave.robot-north-leave-active {
-        transition: .2s;
+        transition: .75s;
         bottom: 100%;
       }
 
@@ -215,7 +254,7 @@
       }
 
       .robot-south-enter.robot-south-enter-active {
-        transition: .2s;
+        transition: .75s;
         top: 0;
       }
 
@@ -224,7 +263,7 @@
       }
 
       .robot-south-leave.robot-south-leave-active {
-        transition: .2s;
+        transition: .75s;
         top: 100%;
       }
 
