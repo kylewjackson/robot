@@ -68,6 +68,11 @@
       height: 8vh;
     }
 
+      .base {
+        position: relative;
+        z-index: 1;
+      }
+
       .wheels,
       .face {
         position: absolute;
@@ -76,44 +81,85 @@
         .face {
           width: 20%;
           top: 12%;
+          z-index: 2;
         }
 
         .wheels {
           width: 28%;
           top: 100%;
+          z-index: -1;
         }
 
-          .wheels.left {
-            left: 22%;
+          .left-wheel,
+          .right-wheel {
+            position: absolute;
+            transform-style: preserve-3d;
+            width: 28%;
+            height: 28%;
+            top: 100%;
           }
 
-          .wheels.right {
-            right: 22%;
+          .left-wheel {
+            left: 24%;
           }
+
+          .right-wheel {
+            right: 24%;
+          }
+
+            .wheel-front {
+              width: 100%;
+              height: 100%;
+            }
+
+              .wheel-front::before {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                z-index: 2;
+                content: url('spokes.svg');
+              }
+
+            .wheel-turned {
+              position: absolute;
+              overflow: hidden;
+              top: 0;
+              border-bottom-left-radius: 100%;
+              border-bottom-right-radius: 100%;
+              background-color: black;
+              width: 30%;
+              height: 100%;
+              transform: rotateY(-90deg);
+            }
+
+              .wheel-turned::before {
+                position: absolute;
+                opacity: .5;
+                width: 2vw;
+                content: url('tread.svg');
+                left: 0;
+                top: 0;
+                bottom: 45%;
+              }
 
 
 
       /* Turn */
 
-      #robot.turn {
-        transition: .5s;
+      #robot.east.turn  .left-wheel,
+      #robot.east.turn  .right-wheel,
+      #robot.west.turn  .left-wheel,
+      #robot.west.turn  .right-wheel {
+        transition: .65s linear;
       }
 
-      /* #robot.east {
-        transform: rotate(-90deg);
+      #robot.north  .left-wheel,
+      #robot.north  .right-wheel,
+      #robot.south  .left-wheel,
+      #robot.south  .right-wheel {
+        transform: rotateY(-90deg);
+        transition: .65s linear;
       }
-
-      #robot.west {
-        transform: rotate(90deg);
-      }
-
-      #robot.north {
-        transform: rotate(180deg);
-      }
-
-      #robot.south {
-        transform: rotate(0deg);
-      } */
 
 
       /* Move East */
@@ -155,10 +201,10 @@
         }
 
         /* Wheels Roll Horizontally */
-        .robot-east-enter.robot-east-enter-active .wheels.left,
-        .robot-east-leave.robot-east-leave-active .wheels.lef,
-        .robot-east-enter.robot-east-enter-active .wheels.right,
-        .robot-east-leave.robot-east-leave-active .wheels.right {
+        .robot-east-enter.robot-east-enter-active .left-wheel,
+        .robot-east-leave.robot-east-leave-active .left-wheel,
+        .robot-east-enter.robot-east-enter-active .right-wheel,
+        .robot-east-leave.robot-east-leave-active .right-wheel {
           transform: rotate(360deg);
           transition: .75s;
         }
@@ -201,10 +247,10 @@
           }
         }
           /* Wheels Roll Horizontally */
-          .robot-west-enter.robot-west-enter-active .wheels.left,
-          .robot-west-leave.robot-west-leave-active .wheels.lef,
-          .robot-west-enter.robot-west-enter-active .wheels.right,
-          .robot-west-leave.robot-west-leave-active .wheels.right {
+          .robot-west-enter.robot-west-enter-active .left-wheel,
+          .robot-west-leave.robot-west-leave-active .left-wheel,
+          .robot-west-enter.robot-west-enter-active .right-wheel,
+          .robot-west-leave.robot-west-leave-active .right-wheel {
             transform: rotate(-360deg);
             transition: .75s;
           }
@@ -228,6 +274,14 @@
         transition: .75s;
         bottom: 100%;
       }
+
+        /* Wheels Roll Vertically */
+        .robot-north-enter.robot-north-enter-active .wheel-turned::before,
+        .robot-north-leave.robot-north-leave-active .wheel-turned::before{
+          transform: translate(0, -50%);
+          transition: .75s;
+        }
+
 
         #robot.bump.north {
           animation: bump-north .75s ease-out;
@@ -266,6 +320,13 @@
         transition: .75s;
         top: 100%;
       }
+
+        /* Wheels Roll Vertically */
+        .robot-south-enter.robot-south-enter-active .wheel-turned::before,
+        .robot-south-leave.robot-south-leave-active .wheel-turned::before{
+          transform: translate(0, 50%);
+          transition: .75s;
+        }
 
         #robot.bump.south {
           animation: bump-south .75s ease-out;

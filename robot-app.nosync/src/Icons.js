@@ -7,12 +7,23 @@ function Robo() {
     return (
         <>
         <RoboFace cls="face" colorFill={roboFill} colorAccent={roboAccent} />
-        <RoboWheel cls="wheels left" colorFill={roboFill} />
-        <RoboWheel cls="wheels right" colorFill={roboFill} />
+        <RoboWheel cls="left-wheel" />
+        <RoboWheel cls="right-wheel" />
         <RoboBase cls="base" colorFill={roboFill} />
         </>
     );
 };
+
+    function RoboWheel(props) {
+        return (
+            <div className={props.cls ? props.cls : null}>
+                <div className='wheel-front'>
+                </div>
+                <div className='wheel-turned'>
+                </div>
+            </div>
+        );
+    };
 
     function RoboBase(props) {
         return (
@@ -45,46 +56,5 @@ function Robo() {
         </svg>
         );
     };
-
-    function RoboWheel(props) {
-        return (
-            props.vertical ?
-            <VerticalWheel cls={props.cls} colorFill={props.colorFill} colorAccent={props.roboAccent} /> :
-            <HorizontalWheel cls={props.cls} colorFill={props.colorFill} />
-        );
-    };
-
-        function HorizontalWheel(props) {
-            return (
-                <svg className={props.cls ? props.cls : null} viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M27 54C41.9117 54 54 41.9117 54 27C54 12.0883 41.9117 0 27 0C12.0883 0 0 12.0883 0 27C0 41.9117 12.0883 54 27 54ZM27 40.2353C34.3097 40.2353 40.2353 34.3097 40.2353 27C40.2353 19.6903 34.3097 13.7647 27 13.7647C19.6903 13.7647 13.7647 19.6903 13.7647 27C13.7647 34.3097 19.6903 40.2353 27 40.2353Z" fill={props.colorFill}/>
-                    <path d="M25 13H29V29H25V13Z" fill={props.colorFill}/>
-                    <path d="M39.8564 18L41.8564 21.4641L28 29.4641L26 26L39.8564 18Z" fill={props.colorFill}/>
-                    <path d="M14 18L12 21.4641L25.8564 29.4641L27.8564 26L14 18Z" fill={props.colorFill}/>
-                    <path d="M37.0893 42.9403L40.1938 40.418L30.1045 28L27 30.5223L37.0893 42.9403Z" fill={props.colorFill}/>
-                    <path d="M18.2339 43.2896L15 40.9355L24.4167 28L27.6505 30.3542L18.2339 43.2896Z" fill={props.colorFill}/>
-                    <path d="M31 28C31 30.2091 29.2091 32 27 32C24.7909 32 23 30.2091 23 28C23 25.7909 24.7909 24 27 24C29.2091 24 31 25.7909 31 28Z" fill={props.colorFill}/>
-                </svg>
-            );
-        };
-
-        function VerticalWheel(props) {
-            return (
-                <svg className={props.cls ? props.cls : null} viewBox="0 0 20 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0H20V19C20 24.5228 15.5228 29 10 29V29C4.47715 29 0 24.5228 0 19V0Z" fill={props.colorFill}/>
-                    <Tread cls="tread" colorAccent={props.colorAccent} />
-                </svg>
-            );
-        };
-
-            function Tread(props) {
-                return (
-                    <svg className={props.cls ? props.cls : null} viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 9H20V12H0V9Z" fill={props.colorAccent} />
-                        <path d="M0 0H20V3H0V0Z" fill={props.colorAccent}/>
-                        <path d="M0 18H20V21H0V18Z" fill={props.colorAccent}/>
-                    </svg>
-                );
-            };
 
 export {Robo};
