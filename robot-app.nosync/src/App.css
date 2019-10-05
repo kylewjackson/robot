@@ -137,7 +137,7 @@
       }
 
         #robot.bump.east {
-          animation: bump-east .5s ease-out;
+          animation: bump-east .75s ease-out;
         }
 
         @keyframes bump-east {
@@ -184,7 +184,7 @@
       }
 
         #robot.bump.west {
-          animation: bump-west .5s ease-out;
+          animation: bump-west .75s ease-out;
         }
 
         @keyframes bump-west {
@@ -230,7 +230,7 @@
       }
 
         #robot.bump.north {
-          animation: bump-north .5s ease-out;
+          animation: bump-north .75s ease-out;
         }
 
         @keyframes bump-north {
@@ -268,7 +268,7 @@
       }
 
         #robot.bump.south {
-          animation: bump-south .5s ease-out;
+          animation: bump-south .75s ease-out;
         }
 
         @keyframes bump-south {
