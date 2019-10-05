@@ -102,7 +102,7 @@ class App extends React.Component {
       const robot = props.row && props.col ? true : false;
       return (
         <div className={`cell-${props.num}`}>
-          <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={750} transitionLeaveTimeout={750}>
+          <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
             {robot ?
               <span id="robot" key="robot" className={props.bump? `bump ${props.active}` : props.turn ? `turn ${props.active}` : props.active}>
                 <Robo />

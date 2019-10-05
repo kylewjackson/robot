@@ -82,7 +82,20 @@
           width: 20%;
           top: 12%;
           z-index: 2;
+          transition: .35s;
         }
+
+          .east .face {
+            left: 42%;
+          }
+
+          .west .face {
+            left: 38%;
+          }
+
+          .north .face > path {
+            opacity: 0;
+          }
 
         .wheels {
           width: 28%;
@@ -135,7 +148,7 @@
               .wheel-turned::before {
                 position: absolute;
                 opacity: .5;
-                width: 2vw;
+                width: 1vw;
                 content: url('tread.svg');
                 left: 0;
                 top: 0;
@@ -150,7 +163,7 @@
       #robot.east.turn  .right-wheel,
       #robot.west.turn  .left-wheel,
       #robot.west.turn  .right-wheel {
-        transition: .65s linear;
+        transition: .25s linear;
       }
 
       #robot.north  .left-wheel,
@@ -158,7 +171,7 @@
       #robot.south  .left-wheel,
       #robot.south  .right-wheel {
         transform: rotateY(-90deg);
-        transition: .65s linear;
+        transition: .25s linear;
       }
 
 
@@ -169,7 +182,7 @@
       }
 
       .robot-east-enter.robot-east-enter-active {
-        transition: .75s;
+        transition: 1s;
         left: 0;
       }
 
@@ -178,12 +191,12 @@
       }
 
       .robot-east-leave.robot-east-leave-active {
-        transition: .75s;
+        transition: 1s;
         left: 18vw;
       }
 
         #robot.bump.east {
-          animation: bump-east .75s ease-out;
+          animation: bump-east 1s ease-out;
         }
 
         @keyframes bump-east {
@@ -206,7 +219,7 @@
         .robot-east-enter.robot-east-enter-active .right-wheel,
         .robot-east-leave.robot-east-leave-active .right-wheel {
           transform: rotate(360deg);
-          transition: .75s;
+          transition: 1s;
         }
 
       /* Move West */
@@ -216,7 +229,7 @@
       }
 
       .robot-west-enter.robot-west-enter-active {
-        transition: .75s;
+        transition: 1s;
         right: 0;
       }
 
@@ -225,12 +238,12 @@
       }
 
       .robot-west-leave.robot-west-leave-active {
-        transition: .75s;
+        transition: 1s;
         right: 18vw;
       }
 
         #robot.bump.west {
-          animation: bump-west .75s ease-out;
+          animation: bump-west 1s ease-out;
         }
 
         @keyframes bump-west {
@@ -252,7 +265,7 @@
           .robot-west-enter.robot-west-enter-active .right-wheel,
           .robot-west-leave.robot-west-leave-active .right-wheel {
             transform: rotate(-360deg);
-            transition: .75s;
+            transition: 1s;
           }
 
       /* Move North */
@@ -262,29 +275,29 @@
       }
 
       .robot-north-enter.robot-north-enter-active {
-        transition: .75s;
+        transition: 1s;
         bottom: 0;
       }
 
       .robot-north-leave {
-        bottom: 0;
+        bottom: 2%;
       }
 
       .robot-north-leave.robot-north-leave-active {
-        transition: .75s;
-        bottom: 100%;
+        transition: 1s;
+        bottom: 102%;
       }
 
         /* Wheels Roll Vertically */
         .robot-north-enter.robot-north-enter-active .wheel-turned::before,
         .robot-north-leave.robot-north-leave-active .wheel-turned::before{
-          transform: translate(0, -50%);
-          transition: .75s;
+          transform: translate(0, -30%);
+          transition: 1s;
         }
 
 
         #robot.bump.north {
-          animation: bump-north .75s ease-out;
+          animation: bump-north 1s ease-out;
         }
 
         @keyframes bump-north {
@@ -308,28 +321,28 @@
       }
 
       .robot-south-enter.robot-south-enter-active {
-        transition: .75s;
+        transition: 1s;
         top: 0;
       }
 
       .robot-south-leave {
-        top: 0;
+        top: 2%;
       }
 
       .robot-south-leave.robot-south-leave-active {
-        transition: .75s;
-        top: 100%;
+        transition: 1s;
+        top: 102%;
       }
 
         /* Wheels Roll Vertically */
         .robot-south-enter.robot-south-enter-active .wheel-turned::before,
         .robot-south-leave.robot-south-leave-active .wheel-turned::before{
-          transform: translate(0, 50%);
-          transition: .75s;
+          transform: translate(0, 30%);
+          transition: 1s;
         }
 
         #robot.bump.south {
-          animation: bump-south .75s ease-out;
+          animation: bump-south 1s ease-out;
         }
 
         @keyframes bump-south {
