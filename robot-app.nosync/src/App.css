@@ -1,4 +1,20 @@
 
+body {
+  background-color: #e8e8e8;
+  color: #212121;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-family: 'Bungee Hairline', cursive;
+  font-size: 3rem;
+  margin: 2vh 0 0 0;
+}
+
+a {
+  color: #37703d;
+}
+
 .grid-container {
   display: grid;
   overflow: hidden;
@@ -17,55 +33,102 @@
       display: grid;
       place-items: center;
       min-height: 12vh;
-      border: 1px solid black;
+      border: 1px dashed grey;
     }
+
 
   .controls {
     display: grid;
-    width: 50%;
-    margin: 5% auto 0 auto;
-    justify-items: center;
-    grid-template-areas:
-      ". n . ."
-      "w . e acc"
-      ". s . .";
+    margin-top: 2%;
+    gap: 5vw;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
   }
 
-    #forward {
-      grid-area: acc;
+    .directions {
+      justify-self: end;
+      display: grid;
+      justify-items: center;
+      justify-content: center;
+      grid-template-areas:
+        ". n ."
+        "w . e"
+        ". s .";
     }
 
-    #north {
-      grid-area: n;
-    }
+      #north {
+        grid-area: n;
+      }
 
-    #east {
-      grid-area: e;
-    }
+      #east {
+        grid-area: e;
+      }
 
-    #south {
-      grid-area: s;
-    }
+      #south {
+        grid-area: s;
+      }
 
-    #west {
-      grid-area: w;
-    }
+      #west {
+        grid-area: w;
+      }
 
     button {
-      width: 50px;
-      height: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      font-size: .9rem;
+      width: 10vw;
+      height: 10vw;
       padding: 0;
-      background-color: grey;
+      background-color: #c2c2c2;
       border-radius: 50%;
-      border: 3px solid darkgray;
+      border: 5px solid darkgrey;
+      -webkit-box-shadow: inset 0px 0px 25px 20px rgba(153,153,153,0.5);
+      -moz-box-shadow: inset 0px 0px 25px 20px rgba(153,153,153,0.5);
+      box-shadow: inset 0px 0px 25px 20px rgba(153,153,153,0.5);
     }
 
+    button#forward {
+      justify-self: start;
+      margin: 5%;
+      width: 20vw;
+      height: 20vw;
+    }
+
+      button:active {
+        border: none;
+      }
+
+    /* Currently Active Direction Button */
     button:not(.active) {
       opacity: .5;
     }
 
     button.active {
-      color: red;
+      background-color: #37703d;
+      color: white;
+    }
+
+    @media (min-width: 500px) {
+      button {
+        width: 50px;
+        height: 50px;
+      }
+
+      button#forward {
+        width: 100px;
+        height: 100px
+      }
+    }
+
+    button:disabled {
+      background-color: rgba(43, 43, 43, 0.25);
+      border: none;
+    }
+    
+    button#forward:disabled {
+      background-color: rgba(255, 0, 0, 0.25);
+      color: white;
+      font-size: 2rem;
     }
 
 
@@ -120,7 +183,6 @@
         .wheels {
           width: 28%;
           top: 100%;
-          z-index: -1;
         }
 
           .left-wheel,
@@ -220,7 +282,6 @@
             opacity: 1;
           }
         }
-
 
       /* Move East */
 
@@ -442,3 +503,8 @@
             top: 0;
           }
         }
+
+footer {
+  text-align: right;
+  padding-right: 2%;
+}

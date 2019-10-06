@@ -1,15 +1,15 @@
 import React from 'react';
 
-const roboFill = 'black';
-const roboAccent = 'white';
+const roboFill = '#212121';
+const roboAccent = '#e8e8e8';
 
-function Robo() {
+function Robo(props) {
     return (
         <>
-        <RoboFace cls="face" colorFill={roboFill} colorAccent={roboAccent} />
+        <RoboFace cls="face" colorFill={props.roboFill ? props.roboFill : roboFill} colorAccent={props.roboAccent ? props.roboAccent : roboAccent} />
         <RoboWheel cls="left-wheel" />
         <RoboWheel cls="right-wheel" />
-        <RoboBase cls="base" colorFill={roboFill} />
+        <RoboBase cls="base" colorFill={props.roboFill ? props.roboFill : roboFill} />
         </>
     );
 };
@@ -45,9 +45,9 @@ function Robo() {
     function RoboFace(props) {
         return (
         <svg className={props.cls ? props.cls : null} viewBox="0 0 50 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.7718 8C16.7718 12.4183 13.1901 16 8.77182 16C4.35354 16 0.77182 12.4183 0.77182 8C0.77182 3.58172 4.35354 0 8.77182 0C13.1901 0 16.7718 3.58172 16.7718 8Z" fill={props.colorAccent}/>
-            <path d="M49.7718 8C49.7718 12.4183 46.1901 16 41.7718 16C37.3535 16 33.7718 12.4183 33.7718 8C33.7718 3.58172 37.3535 0 41.7718 0C46.1901 0 49.7718 3.58172 49.7718 8Z" fill={props.colorAccent}/>
-            <path d="M6.77182 27H42.7718V43H6.77182V27Z" fill={props.colorAccent}/>
+            <path d="M16.7718 8C16.7718 12.4183 13.1901 16 8.77182 16C4.35354 16 0.77182 12.4183 0.77182 8C0.77182 3.58172 4.35354 0 8.77182 0C13.1901 0 16.7718 3.58172 16.7718 8Z" className="eyes" fill={props.colorAccent}/>
+            <path d="M49.7718 8C49.7718 12.4183 46.1901 16 41.7718 16C37.3535 16 33.7718 12.4183 33.7718 8C33.7718 3.58172 37.3535 0 41.7718 0C46.1901 0 49.7718 3.58172 49.7718 8Z" className="eyes" fill={props.colorAccent}/>
+            <path d="M6.77182 27H42.7718V43H6.77182V27Z" className="mouth" fill={props.colorAccent}/>
             <path d="M9.77182 27H11.7718V43H9.77182V27Z" fill={props.colorFill}/>
             <path d="M16.7718 27H18.7718V43H16.7718V27Z" fill={props.colorFill}/>
             <path d="M23.7718 27H25.7718V43H23.7718V27Z" fill={props.colorFill}/>

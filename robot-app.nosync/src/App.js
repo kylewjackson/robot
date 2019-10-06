@@ -16,6 +16,7 @@ class App extends React.Component {
       direction: [0, 1],
       active: 'east',
       prev: null,
+      pause: false,
       turn: false,
       bump: false,
     };
@@ -42,6 +43,10 @@ class App extends React.Component {
       const nextCol = parseInt(this.state.direction[1]) + parseInt(this.state.col);
       nextCol < 1 || nextCol > count ? this.bump() : this.setState({col: nextCol});
     };
+    this.setState({pause: true});
+    setTimeout(() => {
+        this.setState({pause: false});
+    }, 1000);
   };
 
     bump() {
@@ -73,9 +78,14 @@ class App extends React.Component {
       </section>
       <Controls
         active={this.state.active}
+        pause={this.state.pause}
+        bump={this.state.bump}
         handleMove={this.handleMove}
         handleTurn={this.handleTurn}
       />
+      <footer>
+      <small>by <a href="https://www.kylejackson.dev" target="_blank" rel="noopener noreferrer">kyle kackson</a></small>
+      </footer>
       </>
     );
   };
@@ -130,14 +140,19 @@ class App extends React.Component {
         id={dir.toLowerCase()}
         className={props.active === dir.toLowerCase() ? 'active' : null}
         onClick={() => props.handleTurn(coordinates[i])}
+        disabled={props.pause ? true : null}
       >
-        <span>{dir}</span>
+        <span>{dir === 'North' ? 'N' : dir === 'South' ? 'S' : dir === 'East' ? 'E' : 'W'}</span>
       </button>
     );
     return (
       <div className="controls">
-        {buttons}
-        <button type="button" id="forward" onClick={() => props.handleMove()}><span>Accelerate</span></button>
+        <div className="directions">
+          {buttons}
+        </div>
+        <button type="button" id="forward" onClick={() => props.handleMove()} disabled={props.pause ? true : null}>
+          <span>{props.bump ? 'Oww!' : props.pause? 'Wee!' : 'GO!'}</span>
+        </button>
       </div>
     );
   };
