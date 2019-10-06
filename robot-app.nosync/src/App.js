@@ -15,6 +15,7 @@ class App extends React.Component {
       col: 3,
       direction: [0, 1],
       active: 'east',
+      prev: null,
       turn: false,
       bump: false,
     };
@@ -25,8 +26,9 @@ class App extends React.Component {
 
   handleTurn(dir) {
     const currentChange = coordinates.map((cord, i) => cord[0] === dir[0] && cord[1] === dir[1] ? i : -1);
+    const prevDirection = this.state.active;
     const currentDirection = cardinals.filter((card, i) => currentChange[i] > -1).join('').toLowerCase();
-    this.setState({direction: dir, active: currentDirection, turn: true});
+    this.setState({direction: dir, active: currentDirection, prev: prevDirection, turn: true});
     setTimeout(() => {
       this.setState({turn: false});
     }, 500);
@@ -58,6 +60,7 @@ class App extends React.Component {
         col={this.state.col}
         direction={this.state.direction}
         active={this.state.active}
+        prev={this.state.prev}
         turn={this.state.turn}
         bump={this.state.bump}
       />
@@ -87,6 +90,7 @@ class App extends React.Component {
         col={props.row && props.col === i + 1 ? props.col : false}
         direction={props.direction}
         active={props.active}
+        prev={props.prev}
         turn={props.turn}
         bump={props.bump}
       />
@@ -104,7 +108,11 @@ class App extends React.Component {
         <div className={`cell-${props.num}`}>
           <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
             {robot ?
-              <span id="robot" key="robot" className={props.bump? `bump ${props.active}` : props.turn ? `turn ${props.active}` : props.active}>
+              <span
+                id="robot"
+                key="robot"
+                className={props.bump? `bump ${props.active} prev-${props.prev}` : props.turn ? `turn ${props.active} prev-${props.prev}` : `${props.active} prev-${props.prev}`}
+              >
                 <Robo />
               </span> :
               null

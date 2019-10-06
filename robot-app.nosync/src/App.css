@@ -147,6 +147,7 @@
 
               .wheel-turned::before {
                 position: absolute;
+                transition: none;
                 opacity: .5;
                 width: 1vw;
                 content: url('tread.svg');
@@ -173,6 +174,32 @@
         transform: rotateY(-90deg);
         transition: .25s linear;
       }
+
+      /* Hide  opposite wheel face during transition */
+      .north.turn.prev-east .wheel-turned,
+      .north.turn.prev-west .wheel-turned,
+      .south.turn.prev-east .wheel-turned,
+      .south.turn.prev-west .wheel-turned,
+      .east.turn.prev-north .wheel-turned,
+      .east.turn.prev-south .wheel-turned,
+      .west.turn.prev-north .wheel-turned,
+      .west.turn.prev-south .wheel-turned {
+        animation: fadeWheel .25s;
+      }
+
+        @keyframes fadeWheel {
+          0% {
+            opacity: 0;
+          }
+
+          80% {
+            opacity: 0;
+          }
+
+          100% {
+            opacity: 1;
+          }
+        }
 
 
       /* Move East */
