@@ -131,13 +131,13 @@ class App extends React.Component {
         className={props.active === dir.toLowerCase() ? 'active' : null}
         onClick={() => props.handleTurn(coordinates[i])}
       >
-        {dir}
+        <span>{dir}</span>
       </button>
     );
     return (
       <div className="controls">
         {buttons}
-        <button type="button" id="forward" onClick={() => props.handleMove()}>Accelerate</button>
+        <button type="button" id="forward" onClick={() => props.handleMove()}><span>Accelerate</span></button>
       </div>
     );
   };
