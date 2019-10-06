@@ -91,7 +91,7 @@
           width: 20%;
           top: 12%;
           z-index: 2;
-          transition: .35s;
+          transition: .2s;
         }
 
           .east .face {
@@ -102,8 +102,19 @@
             left: 38%;
           }
 
-          .north .face > path {
-            opacity: 0;
+          .north.prev-east .face {
+            transform: translateX(50%) rotateY(90deg);
+            transition: .25s;
+          }
+
+          .north.prev-west .face {
+            transform: translateX(-50%) rotateY(-90deg);
+            transition: .25s;
+          }
+
+          .north.prev-south .face {
+            transform: translateX(50%) rotateY(90deg);
+            transition: .2s;
           }
 
         .wheels {
@@ -249,6 +260,24 @@
           }
         }
 
+        .bump.east .left-wheel,
+        .bump.east .right-wheel {
+          animation: bumpRollEast 1s ease-out;
+        }
+          @keyframes bumpRollEast {
+            0% {
+              transform: rotate(180deg);
+            }
+
+            50% {
+              transform: rotate(-180deg);
+            }
+
+            100% {
+              transform: rotate(0deg);
+            }
+          }
+
         /* Wheels Roll Horizontally */
         .robot-east-enter.robot-east-enter-active .left-wheel,
         .robot-east-leave.robot-east-leave-active .left-wheel,
@@ -295,6 +324,25 @@
             right: 0;
           }
         }
+
+        .bump.west .left-wheel,
+        .bump.west .right-wheel {
+          animation: bumpRollWest 1s ease-out;
+        }
+          @keyframes bumpRollWest {
+            0% {
+              transform: rotate(-180deg);
+            }
+
+            50% {
+              transform: rotate(180deg);
+            }
+
+            100% {
+              transform: rotate(0deg);
+            }
+          }
+
           /* Wheels Roll Horizontally */
           .robot-west-enter.robot-west-enter-active .left-wheel,
           .robot-west-leave.robot-west-leave-active .left-wheel,
