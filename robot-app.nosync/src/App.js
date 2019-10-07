@@ -16,7 +16,7 @@ class App extends React.Component {
       direction: [0, 1],
       active: 'east',
       prev: null,
-      pause: false,
+      inMotion: false,
       turn: false,
       bump: false,
     };
@@ -43,9 +43,9 @@ class App extends React.Component {
       const nextCol = parseInt(this.state.direction[1]) + parseInt(this.state.col);
       nextCol < 1 || nextCol > count ? this.bump() : this.setState({col: nextCol});
     };
-    this.setState({pause: true});
+    this.setState({inMotion: true});
     setTimeout(() => {
-        this.setState({pause: false});
+        this.setState({inMotion: false});
     }, 1000);
   };
 
@@ -68,6 +68,7 @@ class App extends React.Component {
         prev={this.state.prev}
         turn={this.state.turn}
         bump={this.state.bump}
+        inMotion={this.state.inMotion}
       />
     );
     return (
@@ -78,7 +79,7 @@ class App extends React.Component {
       </section>
       <Controls
         active={this.state.active}
-        pause={this.state.pause}
+        inMotion={this.state.inMotion}
         bump={this.state.bump}
         handleMove={this.handleMove}
         handleTurn={this.handleTurn}
@@ -103,6 +104,7 @@ class App extends React.Component {
         prev={props.prev}
         turn={props.turn}
         bump={props.bump}
+        inMotion={props.inMotion}
       />
     );
     return (
@@ -114,15 +116,21 @@ class App extends React.Component {
 
     function Cell(props) {
       const robot = props.row && props.col ? true : false;
+      const classArray = [props.active, `prev-${props.prev}`];
+      if (props.bump) {
+        classArray.push('bump');
+      };
+      if (props.turn) {
+        classArray.push('turn');
+      };
+      if (props.inMotion) {
+        classArray.push('zoom');
+      };
       return (
         <div className={`cell-${props.num}`}>
           <CSSTransitionGroup transitionName={`robot-${props.active}`} transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
             {robot ?
-              <span
-                id="robot"
-                key="robot"
-                className={props.bump? `bump ${props.active} prev-${props.prev}` : props.turn ? `turn ${props.active} prev-${props.prev}` : `${props.active} prev-${props.prev}`}
-              >
+              <span id="robot" key="robot" className={classArray.join(' ')}>
                 <Robo />
               </span> :
               null
@@ -140,7 +148,7 @@ class App extends React.Component {
         id={dir.toLowerCase()}
         className={props.active === dir.toLowerCase() ? 'active' : null}
         onClick={() => props.handleTurn(coordinates[i])}
-        disabled={props.pause ? true : null}
+        disabled={props.inMotion ? true : null}
       >
         <span>{dir === 'North' ? 'N' : dir === 'South' ? 'S' : dir === 'East' ? 'E' : 'W'}</span>
       </button>
@@ -150,8 +158,8 @@ class App extends React.Component {
         <div className="directions">
           {buttons}
         </div>
-        <button type="button" id="forward" onClick={() => props.handleMove()} disabled={props.pause ? true : null}>
-          <span>{props.bump ? 'Oww!' : props.pause? 'Wee!' : 'GO!'}</span>
+        <button type="button" id="forward" onClick={() => props.handleMove()} disabled={props.inMotion ? true : null}>
+          <span>{props.bump ? 'Oww!' : props.inMotion? 'Wee!' : 'GO!'}</span>
         </button>
       </div>
     );

@@ -140,6 +140,11 @@ a {
       height: 8vh;
     }
 
+      #robot.zoom::before {
+        position: absolute;
+        content: url('puff.svg');
+      }
+
       .base {
         position: relative;
         z-index: 1;
@@ -348,6 +353,25 @@ a {
           transition: 1s;
         }
 
+        /* Puff */
+        .east.zoom::before,
+        .west.zoom.bump::before {
+          animation: puff 1s;
+          top: 40%;
+          width: 75%;
+        }
+
+        @keyframes puff {
+          0% {
+            left: -50%;
+          }
+
+          100% {
+            left: -200%;
+            opacity: 0;
+          }
+        }
+
       /* Move West */
 
       .robot-west-enter {
@@ -412,6 +436,26 @@ a {
             transform: rotate(-360deg);
             transition: 1s;
           }
+
+          /* Puff */
+        .west.zoom::before,
+        .east.zoom.bump::before {
+          animation: westPuff 1s;
+          transform: rotate(180deg);
+          top: 40%;
+          width: 75%;
+        }
+
+        @keyframes westPuff {
+          0% {
+            right: -50%;
+          }
+
+          100% {
+            right: -200%;
+            opacity: 0;
+          }
+        }
 
       /* Move North */
 
