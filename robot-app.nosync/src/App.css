@@ -356,12 +356,12 @@ a {
         /* Puff */
         .east.zoom::before,
         .west.zoom.bump::before {
-          animation: puff 1s;
+          animation: eastPuff 1s;
           top: 40%;
           width: 75%;
         }
 
-        @keyframes puff {
+        @keyframes eastPuff {
           0% {
             left: -50%;
           }
@@ -503,6 +503,35 @@ a {
           }
         }
 
+        /* Puff */
+        .north.zoom::before,
+        .south.zoom.bump::before {
+          animation: northPuff 1s;
+          width: 75%;
+          transform: rotate(-90deg);
+        }
+
+        @keyframes northPuff {
+          0% {
+            bottom: -70%;
+          }
+
+          100% {
+            bottom: -220%;
+            opacity: 0;
+          }
+        }
+
+        /* Logo */
+        #robot.north::after {
+          position: absolute;
+          z-index: 2;
+          content: url('bellroy-logo.svg');
+          top: 50%;
+          width: 25%;
+          height: 25%;
+        }
+
       /* Move South */
 
       .robot-south-enter {
@@ -545,6 +574,25 @@ a {
 
           100% {
             top: 0;
+          }
+        }
+
+        /* Puff */
+        .south.zoom::before,
+        .north.zoom.bump::before {
+          animation: southPuff 1s;
+          width: 75%;
+          transform: rotate(90deg);
+        }
+
+        @keyframes southPuff {
+          0% {
+            top: -50%;
+          }
+
+          100% {
+            top: -200%;
+            opacity: 0;
           }
         }
 
