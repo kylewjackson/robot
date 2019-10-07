@@ -626,10 +626,10 @@ footer {
     min-height: 10vh;
   }
 
-  #robot {
+  /* #robot {
     width: 6.72vh;
     height: 6.72vh;
-  }
+  } */
 
   .robot-north-enter {
     bottom: -10vh;
@@ -653,9 +653,5 @@ footer {
 
   .robot-south-leave.robot-south-leave-active {
     top: 10.29vh;
-  }
-
-  .wheel-turned {
-    width: 25%;
   }
 }
