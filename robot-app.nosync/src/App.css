@@ -128,7 +128,7 @@ a {
     button#forward:disabled {
       background-color: rgba(255, 0, 0, 0.25);
       color: white;
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
 
@@ -523,14 +523,29 @@ a {
         }
 
         /* Logo */
-        #robot.north::after {
+        #robot::after {
           position: absolute;
           z-index: 2;
+          opacity: .75;
           content: url('bellroy-logo.svg');
+          transition: .2s;
           top: 50%;
           width: 25%;
           height: 25%;
         }
+
+          #robot.south::after,
+          #robot.east::after {
+            transform: translateX(-100%) rotateY(90deg);
+          }
+
+          #robot.west::after {
+            transform: translateX(100%) rotateY(90deg);
+          }
+
+          #robot.north::after {
+            transform: translateX(0) rotateY(0deg);
+          }
 
       /* Move South */
 

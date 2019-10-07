@@ -85,7 +85,7 @@ class App extends React.Component {
         handleTurn={this.handleTurn}
       />
       <footer>
-      <small>by <a href="https://www.kylejackson.dev" target="_blank" rel="noopener noreferrer">kyle kackson</a></small>
+      <small>by <a href="https://www.kylejackson.dev" target="_blank" rel="noopener noreferrer">kyle jackson</a></small>
       </footer>
       </>
     );
