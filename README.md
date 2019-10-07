@@ -3,6 +3,7 @@
 * React.JS
 * Vanilla CSS
 * [Project files directory](https://github.com/kylewjackson/robot/tree/master/robot-app.nosync/src)
+* [Live demo](https://naughty-rosalind-487bdf.netlify.com/) deployed on Netlify
 
 This application is about an SVG robot, who can travel in four directions with the just press of a button!
 

@@ -615,3 +615,47 @@ footer {
   text-align: right;
   padding-right: 2%;
 }
+
+/* Media query for vh items on mobile */
+@media (max-width: 500px) {
+  h1 {
+    margin-top: 1.68vh;
+  }
+
+  div[class^='cell'] {
+    min-height: 10vh;
+  }
+
+  #robot {
+    width: 6.72vh;
+    height: 6.72vh;
+  }
+
+  .robot-north-enter {
+    bottom: -10vh;
+  }
+
+  .robot-north-leave {
+    bottom: 0.21vh;
+  }
+
+  .robot-north-leave.robot-north-leave-active {
+    bottom: 10.29vh;
+  }
+
+  .robot-south-enter {
+    top: -10vh;
+  }
+
+  .robot-south-leave {
+    top: .21vh;
+  }
+
+  .robot-south-leave.robot-south-leave-active {
+    top: 10.29vh;
+  }
+
+  .wheel-turned {
+    width: 25%;
+  }
+}
