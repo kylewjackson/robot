@@ -29,7 +29,8 @@ class App extends React.Component {
     document.addEventListener('keydown', e => {
       if (!this.state.inMotion) {
         if (e.keyCode === 32) {
-          this.handleMove();
+          console.log(`The spacebar should move the robot forward, but for some reason there seems to be an issue with CSSTransitionGroups. I'm currently looking into it.`);
+          // this.handleMove();
         } else if (e.keyCode === 37) {
           this.handleTurn([0, -1]);
         } else if (e.keyCode === 38) {
