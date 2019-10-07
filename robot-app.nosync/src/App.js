@@ -25,6 +25,24 @@ class App extends React.Component {
     this.handleTurn = this.handleTurn.bind(this);
   };
 
+  componentDidMount() {
+    document.addEventListener('keydown', e => {
+      if (!this.state.inMotion) {
+        if (e.keyCode === 32) {
+          this.handleMove();
+        } else if (e.keyCode === 37) {
+          this.handleTurn([0, -1]);
+        } else if (e.keyCode === 38) {
+          this.handleTurn([-1, 0]);
+        } else if (e.keyCode === 39) {
+          this.handleTurn([0, 1]);
+        } else if (e.keyCode === 40) {
+          this.handleTurn([1, 0]);
+        };
+      };
+    }, false);
+  };
+
   handleTurn(dir) {
     const currentChange = coordinates.map((cord, i) => cord[0] === dir[0] && cord[1] === dir[1] ? i : -1);
     const prevDirection = this.state.active;
