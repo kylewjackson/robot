@@ -2,6 +2,7 @@
 
 * React.JS
 * Vanilla CSS
+* [Project files directory](https://github.com/kylewjackson/robot/tree/master/robot-app.nosync/src)
 
 This application is about an SVG robot, who can travel in four directions with the just press of a button!
 
